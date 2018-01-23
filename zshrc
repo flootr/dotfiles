@@ -37,7 +37,7 @@ ZSH_THEME=""
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -59,7 +59,7 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew npm osx tmux yarn z jsontools)
+plugins=(git npm osx z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,12 +91,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export VISUAL=nvim
-alias vim=/usr/local/bin/nvim
-alias vi=nvim
+alias vi=vim
+alias git='hub'
+alias g='git'
+alias gh='hub browse'
+alias ls='ls --color=auto --group-directories-first'
+alias ll='ls -lph --color=auto --group-directories-first'
+alias la='ls -alph --color=auto --group-directories-first'
+alias s='gst --short'
 
+export VISUAL=vim
 export N_PREFIX=/Users/flootr/.n
-export PATH=/usr/local/php5/bin:$PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/php5/bin:$PATH
 
 autoload -U promptinit; promptinit
 prompt pure
@@ -106,4 +112,3 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # use 'ripgrep' to find files
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
-

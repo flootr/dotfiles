@@ -3,22 +3,22 @@ Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
-" Plug 'tpope/vim-fugitive'
-Plug 'dracula/vim'
-Plug 'bling/vim-bufferline'
+Plug 'arcticicestudio/nord-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " Display settings
 set encoding=utf-8 nobomb
 syntax on
 syntax enable
-color dracula
-set termguicolors
+" set termguicolors
+color nord
 
 " General config
 set number
@@ -96,4 +96,3 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_javascript_prettier_use_local_config = 1
-

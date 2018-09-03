@@ -99,10 +99,15 @@ alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -lph --color=auto --group-directories-first'
 alias la='ls -alph --color=auto --group-directories-first'
 alias s='gst --short'
+alias ni="npm install"
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 export VISUAL=vim
 export N_PREFIX=/Users/flootr/.n
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/php5/bin:$PATH
+
+autoload -U zmv
 
 autoload -U promptinit; promptinit
 prompt pure
@@ -110,5 +115,5 @@ prompt pure
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# use 'ripgrep' to find files
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export EDITOR="vim"

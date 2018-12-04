@@ -116,5 +116,5 @@ prompt pure
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!\.git/*"'
 export EDITOR="vim"

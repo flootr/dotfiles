@@ -1,4 +1,7 @@
 call plug#begin('~/.vim/plugged')
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chriskempson/base16-vim'
+Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
@@ -7,18 +10,28 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
-Plug 'arcticicestudio/nord-vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'dracula/vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 " Display settings
 set encoding=utf-8 nobomb
 syntax on
 syntax enable
-" set termguicolors
-color nord
+set termguicolors
+set t_Co=256
+" let ayucolor="mirage"
+set background=dark
+" colorscheme solarized8_flat
+colorscheme dracula
 
 " General config
 set number
@@ -49,7 +62,6 @@ set smarttab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
-set background=dark
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -75,10 +87,11 @@ nnoremap <M-l> <c-w>l
 let g:jsx_ext_required=0
 
 " Prettier Plugin
-let g:prettier#config#print_width = 120
-let g:prettier#config#use_tabs = 'true'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
+" let g:prettier#config#print_width = 120
+" let g:prettier#config#use_tabs = 'true'
+" let g:prettier#config#bracket_spacing = 'true'
+" let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
 
 " map key to command
@@ -92,7 +105,10 @@ set signcolumn=yes
 
 " Ale Plugin
 let g:ale_lint_on_text_changed = 'never'                   " Only lint when text is saved.
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_javascript_prettier_use_local_config = 1
+" let g:ale_fixers['javascript'] = ['prettier']
+" let g:ale_javascript_prettier_use_local_config = 1
+
+" Gutentags (ctags made easy)
+let g:gutentags_file_list_command = 'rg --files -g "!package-lock\.json" -g "!\.git/*" -g "!public/*"'

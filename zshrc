@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi=vim
 alias vim=nvim
+alias v=vim
 alias git='hub'
 alias g='git'
 alias gh='hub browse'
@@ -101,12 +102,19 @@ alias ll='ls -lph --color=auto --group-directories-first'
 alias la='ls -alph --color=auto --group-directories-first'
 alias s='gst --short'
 alias ni="npm install"
+alias reup="git fetch --prune && git rebase origin/master"
+
+ggpu() {
+	git push -u origin `git rev-parse --abbrev-ref HEAD`
+}
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 export VISUAL=vim
 export N_PREFIX=/Users/flootr/.n
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/php5/bin:$PATH
+export PATH=$PATH:$HOME/Documents/qmk_firmware/bin
+export QUOTING_STYLE=literal
 
 autoload -U zmv
 

@@ -1,37 +1,46 @@
 call plug#begin('~/.vim/plugged')
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'chriskempson/base16-vim'
+" Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-unimpaired'
+" Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
-Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'dracula/vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
+" Plug 'lifepillar/vim-solarized8'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'evanleck/vim-svelte'
 call plug#end()
 
-" Display settings
 set encoding=utf-8 nobomb
+
+"display settings
+if (has("nvim"))
+	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+	set termguicolors
+endif
+
 syntax on
 syntax enable
-set termguicolors
-set t_Co=256
-" let ayucolor="mirage"
+" set t_Co=256
 set background=dark
 " colorscheme solarized8_flat
-colorscheme dracula
+colorscheme gruvbox
+" colorscheme Tomorrow-Night
+let g:lightline = {
+  \ 'colorscheme': 'gruvbox',
+  \ }
 
 " General config
 set number
@@ -43,6 +52,12 @@ set laststatus=2
 set clipboard=unnamed
 set splitright
 set splitbelow
+" set lazyredraw
+set undofile
+
+if has('nvim')
+	set inccommand=nosplit
+endif
 
 " Mouse
 set ttyfast
@@ -79,6 +94,9 @@ set scrolloff=1
 map <C-p> :FZF<cr>
 nmap <C-p> :FZF<cr>
 
+map <C-K> :bprev<CR>
+map <C-J> :bnext<CR>
+
 nnoremap <M-h> <c-w>h
 nnoremap <M-j> <c-w>j
 nnoremap <M-k> <c-w>k
@@ -100,15 +118,11 @@ map <Leader>f :Find<space>
 " Find in files
 command! -bang -nargs=* Find call fzf#vim#grep( 'rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-" Git Gutter Plugin
-set signcolumn=yes
-
 " Ale Plugin
 let g:ale_lint_on_text_changed = 'never'                   " Only lint when text is saved.
-" let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
-" let g:ale_fixers['javascript'] = ['prettier']
-" let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_linters = { 'javascript': ['eslint'] }
 
-" Gutentags (ctags made easy)
-let g:gutentags_file_list_command = 'rg --files -g "!package-lock\.json" -g "!\.git/*" -g "!public/*"'
+
+" Enter cleans the search highlight
+:nnoremap <CR> :nohlsearch<cr>

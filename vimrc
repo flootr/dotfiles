@@ -1,9 +1,6 @@
 call plug#begin('~/.vim/plugged')
-" Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-vinegar'
-" Plug 'tpope/vim-unimpaired'
-" Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
@@ -14,12 +11,15 @@ Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
-" Plug 'lifepillar/vim-solarized8'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-" Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'evanleck/vim-svelte'
+Plug 'chriskempson/base16-vim'
 call plug#end()
+
+" If installed using Homebrew
+set rtp+=~/.fzf/bin/fzf
+
+" If installed using git
+set rtp+=~/.fzf
 
 set encoding=utf-8 nobomb
 
@@ -33,14 +33,13 @@ endif
 
 syntax on
 syntax enable
-" set t_Co=256
+set t_Co=256
+let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
-" colorscheme solarized8_flat
-colorscheme gruvbox
-" colorscheme Tomorrow-Night
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
-  \ }
+colorscheme base16-tomorrow-night
+" let g:lightline = {
+"   \ 'colorscheme': 'gruvbox',
+"   \ }
 
 " General config
 set number

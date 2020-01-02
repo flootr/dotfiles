@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-vinegar'
+Plug 'chriskempson/base16-vim'
 " Plug 'tpope/vim-unimpaired'
 " Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-commentary'
@@ -18,6 +19,7 @@ Plug 'itchyny/lightline.vim'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'hzchirs/vim-material'
 Plug 'evanleck/vim-svelte'
 call plug#end()
 
@@ -35,11 +37,10 @@ syntax on
 syntax enable
 " set t_Co=256
 set background=dark
-" colorscheme solarized8_flat
-colorscheme gruvbox
-" colorscheme Tomorrow-Night
+let g:material_style='oceanic'
+colorscheme vim-material
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'material',
   \ }
 
 " General config
